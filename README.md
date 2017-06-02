@@ -11,3 +11,9 @@ foreach ($stdin as $line) {
     echo $line;
 }
 ```
+
+## Installation
+
+```
+composer require hikaeme/stdin-iterator
+```
