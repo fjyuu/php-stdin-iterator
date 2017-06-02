@@ -1,0 +1,17 @@
+{
+    "name": "hikaeme/stdin-iterator",
+    "description": "Iterator to read STDIN line by line",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yuki Fujii",
+            "email": "fjyuuk@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+          "Hikaeme\\": "src/"
+        }
+    }
+}
