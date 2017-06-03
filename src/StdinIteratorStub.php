@@ -1,21 +1,31 @@
 <?php
 namespace Hikaeme;
 
-class StdinIterator implements \Iterator
+class StdinIteratorStub extends StdinIterator
 {
-    const DROP_NEW_LINE = \SplFileObject::DROP_NEW_LINE;
+    /** @var int */
+    private $flags;
 
     /** @var \SplFileObject */
     private $file;
 
     /**
      * @param int $flags
+     * @param string $stdin
      */
-    public function __construct($flags = 0)
+    public function __construct($flags = 0, $stdin = '')
     {
-        $this->file = new \SplFileObject('php://stdin');
-        $flags &= static::DROP_NEW_LINE;
-        $this->file->setFlags($flags);
+        $this->flags = $flags & static::DROP_NEW_LINE;
+        $this->setStdin($stdin);
+    }
+
+    /**
+     * @param string $stdin
+     */
+    public function setStdin($stdin)
+    {
+        $this->file = new \SplFileObject('data://text/plain,' . $stdin);
+        $this->file->setFlags($this->flags);
     }
 
     public function current()
