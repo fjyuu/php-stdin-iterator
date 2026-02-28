@@ -3,42 +3,38 @@ namespace Hikaeme;
 
 class StdinIterator implements \Iterator
 {
-    const DROP_NEW_LINE = \SplFileObject::DROP_NEW_LINE;
-
-    /** @var \SplFileObject */
-    private $file;
+    private \SplFileObject $file;
 
     /**
-     * @param int $flags
+     * @param int $flags \SplFileObject flags (e.g. \SplFileObject::DROP_NEW_LINE)
      */
-    public function __construct($flags = 0)
+    public function __construct(int $flags = 0)
     {
         $this->file = new \SplFileObject('php://stdin');
-        $flags &= static::DROP_NEW_LINE;
         $this->file->setFlags($flags);
     }
 
-    public function current()
+    public function current(): mixed
     {
         return $this->file->current();
     }
 
-    public function next()
+    public function next(): void
     {
         $this->file->next();
     }
 
-    public function key()
+    public function key(): mixed
     {
         return $this->file->key();
     }
 
-    public function valid()
+    public function valid(): bool
     {
         return $this->file->valid();
     }
 
-    public function rewind()
+    public function rewind(): void
     {
         // do nothing
     }

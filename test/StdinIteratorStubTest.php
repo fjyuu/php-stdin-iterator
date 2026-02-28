@@ -1,7 +1,9 @@
 <?php
 namespace Hikaeme;
 
-class StdinIteratorStubTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class StdinIteratorStubTest extends TestCase
 {
     public function testDefault()
     {
@@ -19,7 +21,7 @@ class StdinIteratorStubTest extends \PHPUnit_Framework_TestCase
 
     public function testDropNewLine()
     {
-        $stub = new StdinIteratorStub(StdinIterator::DROP_NEW_LINE);
+        $stub = new StdinIteratorStub(\SplFileObject::DROP_NEW_LINE);
         $stub->setStdin($this->getSampleStdin());
 
         $lines = [];
